@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// Defina a interface para os dados da API
 interface User {
   id: number;
   name: string;
@@ -12,7 +11,6 @@ interface User {
 }
 
 export default function FakeApi() {
-  // Defina o tipo do estado como User[] ou null
   const [fakeApiData, setFakeApiData] = useState<User[] | null>(null);
 
   const requestFakeApi = async () => {
@@ -20,7 +18,7 @@ export default function FakeApi() {
       const response = await axios.get<User[]>(
         "https://jsonplaceholder.typicode.com/users"
       );
-      setFakeApiData(response.data); 
+      setFakeApiData(response.data);
     } catch (e) {
       console.log(e);
     }
@@ -45,7 +43,7 @@ export default function FakeApi() {
           </tr>
         </thead>
         <tbody>
-          {fakeApiData && 
+          {fakeApiData &&
             fakeApiData.map((data) => (
               <tr key={data.id}>
                 <td className="border border-slate-300">{data.name}</td>
